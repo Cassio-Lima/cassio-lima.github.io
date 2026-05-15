@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 60" fill="none" aria-label="Cássio Lima wordmark">
+  <g font-family="Fraunces, Georgia, serif" fill="currentColor">
+    <text x="0" y="42" font-size="36" font-weight="400">Cássio Lima</text>
+  </g>
+  <line x1="222" y1="32" x2="248" y2="32" stroke="currentColor" stroke-width="1"></line>
+  <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="10" fill="currentColor" letter-spacing="0.16em">
+    <text x="254" y="29">DATA SCIENTIST</text>
+    <text x="254" y="42" opacity="0.6">PHD · PLANT BIOTECH</text>
+  </g>
+</svg>

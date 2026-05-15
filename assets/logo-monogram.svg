@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" aria-label="CL monogram">
+  
+  <rect x="1" y="1" width="94" height="94" rx="2" stroke="currentColor" stroke-width="1" fill="none" opacity="0.45"></rect>
+  
+  <g stroke="currentColor" stroke-width="1" opacity="0.6">
+    <path d="M6 1 V 6 M 1 6 H 6"></path>
+    <path d="M90 1 V 6 M 95 6 H 90"></path>
+    <path d="M6 95 V 90 M 1 90 H 6"></path>
+    <path d="M90 95 V 90 M 95 90 H 90"></path>
+  </g>
+  
+  <path d="M50 22&#xA;           C 32 22, 22 34, 22 48&#xA;           C 22 62, 32 74, 50 74" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"></path>
+  
+  <path d="M58 22 V 74 H 78" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+  
+  <circle cx="48" cy="48" r="2.5" fill="currentColor"></circle>
+</svg>

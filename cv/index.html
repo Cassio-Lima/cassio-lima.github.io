@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Cássio Lima — CV</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  @page { size: A4; margin: 0; }
+  html, body { background: #d8d5c8; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  @media print {
+    html, body { background: white; }
+    .page { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; }
+  }
+
+  /* ============ HEADER ============ */
+  .cv-header {
+    padding: 22mm 18mm 10mm 18mm;
+    border-bottom: 1px solid rgba(10,31,26,0.12);
+    position: relative;
+    background: linear-gradient(180deg, #efebe0 0%, var(--paper) 100%);
+  }
+  .cv-header::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 160px; height: 160px;
+    background: url('../assets/leaf-venation.svg') center / contain no-repeat;
+    color: var(--chloro-500);
+    opacity: 0.18;
+    transform: translate(40px, -20px) rotate(15deg);
+    pointer-events: none;
+  }
+  .cv-id {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;
+    margin-bottom: 12px;
+  }
+  .cv-name {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 44pt;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: #0a1f1a;
+    margin: 0 0 6px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .cv-role {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15pt;
+    color: var(--chloro-700);
+    margin: 0;
+  }
+  .cv-id-mono {
+    text-align: right;
+    font-family: var(--font-mono); font-weight: 500;
+    font-size: 8pt; letter-spacing: 0.14em;
+    color: var(--slate-500);
+    line-height: 1.7;
+  }
+  .cv-id-mono .accent { color: var(--chloro-700); }
+
+  .cv-contact {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-weight: 500;
+    font-size: 8.5pt; letter-spacing: 0.06em;
+    color: var(--slate-700);
+    padding-top: 8px;
+  }
+  .cv-contact span { display: inline-flex; align-items: center; gap: 6px; }
+  .cv-contact svg { color: var(--chloro-500); flex-shrink: 0; }
+
+  /* ============ BODY ============ */
+  .cv-body {
+    display: grid;
+    grid-template-columns: 1fr 88mm;
+    gap: 14mm;
+    padding: 12mm 18mm 18mm 18mm;
+  }
+  .cv-main { display: flex; flex-direction: column; gap: 10mm; }
+  .cv-aside { display: flex; flex-direction: column; gap: 10mm; }
+
+  /* Section labels */
+  .lbl {
+    font-family: var(--font-mono); font-weight: 600;
+    font-size: 8pt; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--chloro-700);
+    display: flex; align-items: center; gap: 10px;
+    margin: 0 0 12px;
+  }
+  .lbl::after {
+    content: ''; flex: 1;
+    height: 1px;
+    background: rgba(10,31,26,0.18);
+  }
+
+  /* Profile */
+  .profile {
+    font-family: var(--font-serif);
+    font-size: 11.5pt;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .profile em { font-style: italic; color: var(--chloro-700); }
+
+  /* Experience */
+  .xp-item { margin-bottom: 9mm; }
+  .xp-item:last-child { margin-bottom: 0; }
+  .xp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 2px; }
+  .xp-role {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 11pt;
+    color: var(--ink);
+    margin: 0;
+  }
+  .xp-period {
+    font-family: var(--font-mono); font-weight: 500;
+    font-size: 8pt; letter-spacing: 0.10em;
+    color: var(--slate-500);
+    white-space: nowrap;
+  }
+  .xp-org {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 10pt;
+    color: var(--chloro-700);
+    margin-bottom: 6px;
+  }
+  .xp-org .place { color: var(--slate-500); font-style: normal; font-family: var(--font-mono); font-weight: 500; font-size: 8pt; letter-spacing: 0.10em; margin-left: 6px; }
+  .xp-bullets {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .xp-bullets li {
+    position: relative;
+    padding-left: 12px;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .xp-bullets li::before {
+    content: ''; position: absolute; left: 0; top: 7px;
+    width: 6px; height: 1px;
+    background: var(--chloro-500);
+  }
+
+  /* Publications */
+  .pub-item { margin-bottom: 6mm; padding-bottom: 6mm; border-bottom: 1px dashed rgba(10,31,26,0.14); }
+  .pub-item:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+  .pub-venue {
+    font-family: var(--font-mono); font-weight: 500;
+    font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--chloro-700);
+    margin-bottom: 3px;
+  }
+  .pub-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .pub-authors {
+    font-size: 9pt;
+    color: var(--slate-700);
+    margin-bottom: 4px;
+  }
+  .pub-authors .me { color: var(--ink); font-weight: 600; font-style: italic; }
+  .pub-blurb {
+    font-size: 9pt; line-height: 1.45;
+    color: var(--slate-700);
+    margin: 0;
+  }
+  .pub-doi {
+    font-family: var(--font-mono);
+    font-size: 7.5pt; letter-spacing: 0.05em;
+    color: var(--slate-500);
+    margin-top: 4px;
+  }
+
+  /* Aside */
+  .skills-block { display: flex; flex-direction: column; gap: 5mm; }
+  .skill-row { display: grid; grid-template-columns: 32mm 1fr; gap: 8px; padding-bottom: 3mm; border-bottom: 1px dashed rgba(10,31,26,0.12); }
+  .skill-row:last-child { border: none; padding-bottom: 0; }
+  .skill-k {
+    font-family: var(--font-mono); font-weight: 600;
+    font-size: 8pt; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--chloro-700);
+    padding-top: 2px;
+  }
+  .skill-v { font-size: 9pt; line-height: 1.4; color: var(--ink); }
+  .skill-v .sub { color: var(--slate-500); font-size: 8.5pt; }
+
+  .edu-block { display: flex; flex-direction: column; gap: 4mm; }
+  .edu-item { padding-bottom: 4mm; border-bottom: 1px dashed rgba(10,31,26,0.12); }
+  .edu-item:last-child { border: none; padding-bottom: 0; }
+  .edu-deg {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 10pt;
+    color: var(--ink);
+    margin: 0;
+  }
+  .edu-org {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 9pt;
+    color: var(--chloro-700);
+    margin: 2px 0 0;
+  }
+  .edu-period { font-family: var(--font-mono); font-weight: 500; font-size: 7.5pt; letter-spacing: 0.10em; color: var(--slate-500); margin-top: 2px; }
+
+  .cert-block { display: flex; flex-direction: column; gap: 3mm; font-size: 9pt; color: var(--ink); }
+  .cert-block .row { display: flex; gap: 8px; align-items: flex-start; }
+  .cert-block .row svg { color: var(--chloro-500); flex-shrink: 0; margin-top: 3px; }
+  .cert-block .row strong { font-weight: 600; }
+  .cert-block .row .meta { color: var(--slate-500); font-size: 8pt; }
+
+  /* Footer */
+  .cv-foot {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 6mm 18mm;
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-weight: 500;
+    font-size: 7pt; letter-spacing: 0.16em;
+    color: var(--slate-500);
+    border-top: 1px solid rgba(10,31,26,0.08);
+  }
+  .cv-foot .mark { color: var(--chloro-500); }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<div class="page" data-screen-label="CV · Page 1">
+  <header class="cv-header">
+    <div class="cv-id">
+      <div>
+        <h1 class="cv-name">Cássio Lima</h1>
+        <p class="cv-role">Specialist Data Management · Data Scientist PhD</p>
+        <p class="cv-role" style="font-size: 10pt; color: var(--slate-700); margin-top: 2px;">@ Rijk Zwaan · Hidden Universe Biodiversity</p>
+      </div>
+      <div class="cv-id-mono">
+        <div>CURRICULUM</div>
+        <div>VITAE · v.<span class="accent">2026.05</span></div>
+        <div style="margin-top: 6px">ORCID</div>
+        <div class="accent">0000-0001-7787-8784</div>
+      </div>
+    </div>
+    <div class="cv-contact">
+      <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Breda, Netherlands</span>
+      <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg> cassio.f.lima@proton.me</span>
+      <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> +31 6 498 98 931</span>
+      <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg> linkedin.com/in/cassio-lima</span>
+    </div>
+  </header>
+
+  <div class="cv-body">
+    <main class="cv-main">
+      <section>
+        <h2 class="lbl">Profile</h2>
+        <p class="profile">
+          With experience in both R&amp;D and IT, I specialise in translating complex business needs into effective, scalable IT solutions — driven by a passion for <em>data management</em> and <em>data stewardship</em>. My work combines expertise in data governance (<em>DAMA</em>, <em>FAIR</em>), full-stack development, and bioinformatics to ensure high-quality, interoperable data flows across R&amp;D and enterprise environments. I thrive at the intersection of science and technology — leveraging tools and methods to uncover the narratives hidden in data and drive innovation in science and beyond.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="lbl">Professional experience</h2>
+
+        <article class="xp-item">
+          <div class="xp-head">
+            <h3 class="xp-role">Data Scientist</h3>
+            <span class="xp-period">APR 2026 — PRESENT</span>
+          </div>
+          <div class="xp-org">Hidden Universe: Biodiversity (HUB) <span class="place">REMOTE</span></div>
+          <ul class="xp-bullets">
+            <li>Compile and integrate multi-source spatial datasets — land tenure, property boundaries, biodiversity records, climate and environmental variables — into a structured GIS database covering an ecological corridor in Rio de Janeiro state.</li>
+            <li>Resolve heterogeneous data formats, multiple coordinate systems, and public/partner sources never designed to talk to each other.</li>
+            <li>Stack: Python, GeoPandas, GDAL, Rasterio, Folium, Jupyter.</li>
+          </ul>
+        </article>
+
+        <article class="xp-item">
+          <div class="xp-head">
+            <h3 class="xp-role">Data Management Specialist</h3>
+            <span class="xp-period">OCT 2023 — PRESENT</span>
+          </div>
+          <div class="xp-org">Rijk Zwaan · R&amp;D Data Office · Governance &amp; Strategy <span class="place">FIJNAART, NL</span></div>
+          <ul class="xp-bullets">
+            <li><strong>Governance &amp; framework.</strong> Design and implement data governance structures and enterprise-wide policies following the DAMA framework and FAIR principles.</li>
+            <li>Establish data ownership and stewardship programs to ensure accountability and quality across R&amp;D projects.</li>
+            <li><strong>Strategic consulting &amp; project leadership.</strong> Provide data-management expertise and architectural guidance for strategic initiatives, ensuring alignment with industry standards.</li>
+            <li>Lead data-driven projects while mentoring teams on governance best practices and sustainable data use.</li>
+            <li><strong>Technical implementation.</strong> End-to-end solutions using a modern stack (Node.js, React, Next.js, Python, TypeScript) — data modeling, quality assurance, system integration.</li>
+          </ul>
+        </article>
+
+        <article class="xp-item">
+          <div class="xp-head">
+            <h3 class="xp-role">Doctoral Researcher</h3>
+            <span class="xp-period">MAY 2019 — SEP 2023</span>
+          </div>
+          <div class="xp-org">VIB — Ghent University · Plant Biotechnology &amp; Bioinformatics <span class="place">GHENT, BE</span></div>
+          <ul class="xp-bullets">
+            <li>Developed bioinformatics workflows for high-throughput omics data — (phospho)proteomics and transcriptomics.</li>
+            <li>Applied multivariate statistics and ML (PCA, t-SNE, UMAP) to identify patterns in large heterogeneous datasets.</li>
+            <li>Data quality control, imputation, normalization and transformation across multi-source biological data.</li>
+            <li>Managed large datasets following FAIR; proficient HPC user (SLURM, PBS) and moderator of virtual teams.</li>
+            <li>Mentored students and collaborated with external partners across distinct research projects.</li>
+          </ul>
+        </article>
+
+        <article class="xp-item">
+          <div class="xp-head">
+            <h3 class="xp-role">Molecular Biology Analyst I</h3>
+            <span class="xp-period">JUN 2018 — APR 2019</span>
+          </div>
+          <div class="xp-org">DLE — Human Genetics &amp; Rare Diseases <span class="place">RIO DE JANEIRO, BR</span></div>
+          <ul class="xp-bullets">
+            <li>Bioinformatics workflows for whole-genome and targeted NGS — variant calling and clinical interpretation.</li>
+            <li>Co-established an in-house method for rapid newborn immunodeficiency screening.</li>
+            <li>Guided medical professionals in sequencing-result interpretation for diagnostics.</li>
+          </ul>
+        </article>
+
+        <article class="xp-item">
+          <div class="xp-head">
+            <h3 class="xp-role">Master Researcher</h3>
+            <span class="xp-period">MAR 2016 — APR 2018</span>
+          </div>
+          <div class="xp-org">Universidade Federal do Rio de Janeiro <span class="place">RIO DE JANEIRO, BR</span></div>
+          <ul class="xp-bullets">
+            <li>NGS transcriptome analysis; profiled differentially expressed genes under biotic stress.</li>
+            <li>Statistical methods for data analysis, model fitting and inference. Fundamental research in protein interaction.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <aside class="cv-aside">
+      <section>
+        <h2 class="lbl">Education</h2>
+        <div class="edu-block">
+          <div class="edu-item">
+            <p class="edu-deg">PhD · Plant Biotechnology &amp; Biochemistry</p>
+            <p class="edu-org">Universiteit Gent · Belgium</p>
+            <p class="edu-period">2019 — 2024</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-deg">MSc · Genetics</p>
+            <p class="edu-org">Universidade Federal do Rio de Janeiro</p>
+            <p class="edu-period">2016 — 2018</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-deg">BSc · Plant Biotechnology (exchange)</p>
+            <p class="edu-org">University of Calgary · Ciência sem Fronteiras</p>
+            <p class="edu-period">2013 — 2014</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-deg">BSc · Biological Sciences</p>
+            <p class="edu-org">Universidade Federal Fluminense</p>
+            <p class="edu-period">2010 — 2016</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="lbl">Certifications</h2>
+        <div class="cert-block">
+          <div class="row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><strong>CDMP Associate</strong><div class="meta">DAMA International · Data Management Fundamentals</div></div>
+          </div>
+          <div class="row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><strong>Nextflow &amp; Reproducibility</strong><div class="meta">2022</div></div>
+          </div>
+          <div class="row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><strong>Research Data Management</strong><div class="meta">2022</div></div>
+          </div>
+          <div class="row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><strong>Unsupervised Learning</strong><div class="meta">2021</div></div>
+          </div>
+          <div class="row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><strong>Omics Data Integration</strong><div class="meta">2021</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="lbl">Languages</h2>
+        <div class="skills-block">
+          <div class="skill-row"><span class="skill-k">Portuguese</span><span class="skill-v">Native <span class="sub">— first language</span></span></div>
+          <div class="skill-row"><span class="skill-k">English</span><span class="skill-v">Fluent <span class="sub">— C1, professional</span></span></div>
+          <div class="skill-row"><span class="skill-k">Spanish</span><span class="skill-v">Advanced <span class="sub">— B2</span></span></div>
+          <div class="skill-row"><span class="skill-k">Dutch</span><span class="skill-v">Basic <span class="sub">— A2, learning</span></span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="lbl">Citizenship</h2>
+        <p style="font-size: 9pt; line-height: 1.5; margin: 0; color: var(--ink);">Brazilian citizen — eligible to work in Brazil and the Netherlands. Family based in Nova Friburgo, Rio de Janeiro (<em style="font-family: var(--font-serif); color: var(--chloro-700);">Mata Atlântica</em>).</p>
+      </section>
+    </aside>
+  </div>
+
+  <div class="cv-foot">
+    <span>CÁSSIO LIMA · CURRICULUM VITAE</span>
+    <span class="mark">PAGE 1 / 2</span>
+    <span>UPDATED 2026.05</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 ============ -->
+<div class="page" data-screen-label="CV · Page 2">
+  <div class="cv-body" style="grid-template-columns: 1fr; padding-top: 18mm;">
+    <main class="cv-main">
+      <section>
+        <h2 class="lbl">Key publications — environmental data contributions</h2>
+
+        <article class="pub-item">
+          <div class="pub-venue">J. Exp. Bot. · 72(21):7359–7373 · 2021 · CO-FIRST AUTHOR</div>
+          <h3 class="pub-title">The heat is on: how crop growth, development, and yield respond to high temperature</h3>
+          <p class="pub-authors">Zhu T*, <span class="me">Fonseca de Lima CF*</span>, De Smet I.</p>
+          <p class="pub-blurb">Curated and integrated historical temperature records from NASA GISS for 5 cities across distinct climate zones (Sydney, Shanghai, Brussels, New York, Rio de Janeiro). Designed Fig. 1 A–C: multi-panel visualisation combining (A) seasonal thermal amplitude curves per station, (B) diurnal temperature oscillation from Belgian meteorological network, and (C) long-term global land-ocean temperature anomaly time-series (1850–2020) with 10-year moving average — demonstrating the full range of thermal variation relevant to plant and ecosystem responses.</p>
+          <div class="pub-doi">DOI · 10.1093/jxb/erab308</div>
+        </article>
+
+        <article class="pub-item">
+          <div class="pub-venue">Front. Plant Sci. · 14:1250878 · 2023</div>
+          <h3 class="pub-title">When drought meets heat — a plant omics perspective</h3>
+          <p class="pub-authors">Xu X, <span class="me">Fonseca de Lima CF</span>, Vu LD, De Smet I.</p>
+          <p class="pub-blurb">Independently designed and produced Fig. 1, integrating three environmental time-series — air temperature anomaly, soil humidity at 50 cm depth (%), and precipitation increments (mm) — from the USDA SCAN network (Shagbark Hills station, Iowa). Applied 10-day moving averages to reveal the temporal relationship between heatwave events (2021 Western North America heat wave) and subsequent soil moisture depletion — demonstrating real-world co-occurrence of heat and drought stresses in agricultural landscapes.</p>
+          <div class="pub-doi">DOI · 10.3389/fpls.2023.1250878</div>
+        </article>
+
+        <p style="font-family: var(--font-serif); font-style: italic; font-size: 10pt; color: var(--slate-700); margin: 6mm 0 0;">
+          Full publication list available at <strong style="font-family: var(--font-mono); font-style: normal; color: var(--chloro-700); font-size: 9pt; letter-spacing: 0.06em;">orcid.org/0000-0001-7787-8784</strong>
+        </p>
+      </section>
+
+      <section>
+        <h2 class="lbl">Technical skills</h2>
+        <div class="skills-block">
+          <div class="skill-row">
+            <span class="skill-k">Data governance</span>
+            <span class="skill-v">DAMA-DMBOK, FAIR principles, data stewardship, metadata management, data quality, provenance, KPI monitoring, enterprise policies</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-k">Programming</span>
+            <span class="skill-v">Python <span class="sub">(pandas, NumPy, scikit-learn, matplotlib, seaborn, plotly)</span>, TypeScript, Node.js, React, Next.js, R, Bash, Git, Nextflow</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-k">Spatial &amp; GIS</span>
+            <span class="skill-v">GeoPandas, GDAL, Rasterio, Folium <span class="sub">— multi-CRS integration, public repositories (NASA GISS, USDA SCAN, NOAA, IBGE, MapBiomas, SICAR/CAR)</span></span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-k">Statistical methods</span>
+            <span class="skill-v">PCA, t-SNE, UMAP, clustering, regression, time-series, anomaly detection</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-k">Compute</span>
+            <span class="skill-v">HPC <span class="sub">(SLURM, PBS)</span>, cloud Unix environments, pipeline automation, reproducible workflows</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-k">Bio-informatics</span>
+            <span class="skill-v">Omics pipelines <span class="sub">(MaxQuant, DESeq2, Scanpy)</span>; ontologies <span class="sub">— Darwin Core, MIxS, GBIF, NCBI Taxonomy, EnvO, Gene Ontology</span></span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="cv-foot">
+    <span>CÁSSIO LIMA · CURRICULUM VITAE</span>
+    <span class="mark">PAGE 2 / 2</span>
+    <span>UPDATED 2026.05</span>
+  </div>
+</div>
+
+</body>
+</html>
